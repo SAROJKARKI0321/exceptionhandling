@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 class MyOwnAgeException extends Exception{
     public MyOwnAgeException(String message){
-        super();
+        super(message);
     }
 }
-class CustomException{
-    static  void checkMarriageAge( int num) throws MyOwnAgeException {
-        if(num<21){
+class CustomException {
+    static void checkMarriageAge(int num) throws MyOwnAgeException {
+        if (num < 21) {
             throw new MyOwnAgeException("21 isnt good age to marry");
-        }
-        else {
+        } else {
             System.out.println("We can marry though");
         }
 
+    }
 }
 
 public class Main {
@@ -24,7 +24,7 @@ public class Main {
         Scanner scanner= new Scanner(System.in);
         int yourAge=scanner.nextInt();
         try{
-            checkMarriageAge(yourAge);
+            CustomException.checkMarriageAge(yourAge);
         }catch (MyOwnAgeException e){
             System.out.println(e.getMessage());
         }
@@ -36,5 +36,5 @@ public class Main {
 
 
 
-}
+
 
