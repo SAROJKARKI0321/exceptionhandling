@@ -1,17 +1,40 @@
 package org.example;
 
+import java.util.Scanner;
+
+class MyOwnAgeException extends Exception{
+    public MyOwnAgeException(String message){
+        super();
+    }
+}
+class CustomException{
+    static  void checkMarriageAge( int num) throws MyOwnAgeException {
+        if(num<21){
+            throw new MyOwnAgeException("21 isnt good age to marry");
+        }
+        else {
+            System.out.println("We can marry though");
+        }
+
+}
+
 public class Main {
-    public static void checkNationality ( String country){
-        if(country.toLowerCase().equals("nepal")){
-            System.out.println("National");
-        }else {
-            throw  new IllegalArgumentException("*****International****");
+    public static void main(String[] args) {
+        System.out.println("Enter your age");
+        Scanner scanner= new Scanner(System.in);
+        int yourAge=scanner.nextInt();
+        try{
+            checkMarriageAge(yourAge);
+        }catch (MyOwnAgeException e){
+            System.out.println(e.getMessage());
+        }
 
         }
 
+
     }
 
-    public static void main(String[] args) {
-        checkNationality("nepal");
-    }
+
+
 }
+
