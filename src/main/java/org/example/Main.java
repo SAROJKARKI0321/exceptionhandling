@@ -1,38 +1,23 @@
 package org.example;
 
-import java.util.Scanner;
+import java.io.*;
 
-class MyOwnAgeException extends Exception{
-    public MyOwnAgeException(String message){
-        super(message);
-    }
-}
-class CustomException {
-    static void checkMarriageAge(int num) throws MyOwnAgeException {
-        if (num < 21) {
-            throw new MyOwnAgeException("21 isnt good age to marry");
-        } else {
-            System.out.println("We can marry though");
+class OwnFileWriter{
+    public  static  void writeToFile(String filename){
+        try(BufferedWriter writer= new BufferedWriter(new FileWriter(filename,false))){
+            writer.write("HEY I AM 4th LINE");
+            writer.newLine();
+        }catch (IOException e){
+            System.out.println("I/O error"+ e.getMessage());
         }
-
     }
-}
 
-public class Main {
+}
+public  class Main {
     public static void main(String[] args) {
-        System.out.println("Enter your age");
-        Scanner scanner= new Scanner(System.in);
-        int yourAge=scanner.nextInt();
-        try{
-            CustomException.checkMarriageAge(yourAge);
-        }catch (MyOwnAgeException e){
-            System.out.println(e.getMessage());
-        }
-
-        }
-
-
+        OwnFileWriter.writeToFile("practise.txt");
     }
+}
 
 
 
